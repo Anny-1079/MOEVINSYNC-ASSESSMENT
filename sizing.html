@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Seat Sizing</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"><link rel="stylesheet" href="style.css"></head><body><div data-page="sizing"><header class="top"><div class="bar"><a class="brand" href="index.html"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="9" height="9" rx="1.5" fill="currentColor"/><rect x="12" y="1" width="9" height="9" rx="1.5" fill="currentColor" opacity=".55"/><rect x="1" y="12" width="9" height="9" rx="1.5" fill="currentColor" opacity=".55"/><rect x="12" y="12" width="9" height="9" rx="1.5" fill="currentColor"/></svg> Hybrid Seat Plan</a><nav aria-label="Pages"><a data-page="index" href="index.html">Overview</a><a data-page="sizing" href="sizing.html">Seat sizing</a><a data-page="kpis" href="kpis.html">KPI scorecard</a><a data-page="plan" href="plan.html">Rollout</a></nav></div></header><main class="wrap">
+  <section>
+    <p class="eyebrow">Question 1</p>
+    <h1>How many seats are needed</h1>
+    <p class="lede">Between 1,200 and 2,000, with 1,500 as the working number. Here is how each figure is reached and what moves it.</p>
+  </section>
+
+  <section>
+    <h2>What I am assuming</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Item</th><th>Value</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>People to seat</td><td class="num">2,000</td><td>Given</td></tr>
+        <tr><td>Office days per person per week</td><td class="num">3</td><td>Given</td></tr>
+        <tr><td>Offices</td><td>3, in 3 countries</td><td>Given</td></tr>
+        <tr><td>Working week</td><td class="num">5 days</td><td>Assumed, Monday to Friday</td></tr>
+        <tr><td>Headcount per office</td><td class="num">900 / 600 / 500</td><td>Example only, the brief gives no split</td></tr>
+        <tr><td>Desk type</td><td>Shared, booked per day</td><td>Assumed, since people are in 3 of 5 days</td></tr>
+        <tr><td>Daily absence (leave, travel, sick)</td><td class="num">8 to 12%</td><td>Assumed, kept as buffer and not deducted</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Minimum, maximum and the number I would plan for</h2>
+    <div class="grid3">
+      <div class="card">
+        <span class="eyebrow">Minimum</span>
+        <span class="big">1,200</span>
+        <span class="formula">2,000 × 3 ÷ 5 = 1,200</span>
+        <p>Total office-days a week are 6,000. Spread over 5 days that is 1,200 a day. No plan can go lower, and this only works when Monday looks like Wednesday.</p>
+      </div>
+      <div class="card plan">
+        <span class="eyebrow">Recommended</span>
+        <span class="big">1,500</span>
+        <span class="formula">1,200 × 1.25 = 1,500</span>
+        <p>People gravitate to Tuesday to Thursday for team meetings and manager calendars. I plan for a busiest day 25% above average. A reasonable range is 1,440 to 1,560.</p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Maximum</span>
+        <span class="big">2,000</span>
+        <span class="formula">peak factor 5 ÷ 3 = 1.67</span>
+        <p>If every person picks the same three days, those days need a seat for everyone and the other two need none. Seats cannot exceed headcount.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <h3>Why not just build for 1,200?</h3>
+      <p>The average day is not the day that matters. If 1,350 people arrive on a Wednesday and only 1,200 desks exist, 150 people have no place to work, and that is what employees remember. Leave and travel remove roughly 8 to 12% of attendance on a normal day, so I keep that as headroom for peak days and for growth.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>How much the peak factor matters</h2>
+    <p>Every step of 0.05 in the factor costs 60 seats. This is the one assumption I would test first with real data, so I show it plainly.</p>
+    <div class="sens" id="sens" aria-label="Seats needed by peak factor"></div>
+    <p class="muted">Bars show seats against the 2,000 headcount. Labels give seats and share of headcount for 2,000 people at 3 days a week.</p>
+  </section>
+
+  <section id="calc">
+    <h2>Try your own numbers</h2>
+    <p>The office split is an example. Change the headcount, days a week, absence and peak factor and the seat count, the grid and the weekly charts below all update.</p>
+    <div class="calc">
+      <div class="panel">
+        <div class="scroll">
+          <table class="ctab">
+            <thead><tr><th>Office</th><th class="r">Headcount</th><th class="r hide-s">Avg / day</th><th class="r">Desks</th></tr></thead>
+            <tbody id="rows"></tbody>
+            <tfoot><tr><td>Total</td><td class="r num" id="f-hc"></td><td class="r num hide-s" id="f-avg"></td><td class="r num" id="f-seats"></td></tr></tfoot>
+          </table>
+        </div>
+        <div class="gridbox">
+          <canvas id="seatgrid" role="img" aria-label="One square per employee. Filled squares are desks in the plan."></canvas>
+          <div class="legend" style="margin-top:8px">
+            <span><i style="background:var(--accent)"></i><span id="lg-seat"></span></span>
+            <span><i style="background:var(--line)"></i><span id="lg-none"></span></span>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="row2">
+          <div class="field">
+            <label for="days">Office days a week</label>
+            <select id="days"><option value="1">1</option><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option><option value="5">5</option></select>
+          </div>
+          <div class="field">
+            <label for="abs">Daily absence <b id="abs-v">0%</b></label>
+            <input id="abs" type="number" min="0" max="30" step="1" value="0">
+          </div>
+        </div>
+        <div class="field">
+          <label for="peak">Busiest day vs average day <b id="peak-v">1.25×</b></label>
+          <input id="peak" type="range" min="1" max="1.67" step="0.01" value="1.25">
+        </div>
+        <dl class="out">
+          <dt>Minimum desks</dt><dd id="o-min"></dd>
+          <dt>Maximum desks</dt><dd id="o-max"></dd>
+          <dt>Desks to plan</dt><dd class="big" id="o-seats"></dd>
+          <dt>Share of headcount</dt><dd id="o-share"></dd>
+          <dt>Desks saved vs one per person</dt><dd id="o-saved"></dd>
+        </dl>
+        <button class="btn small no-print" id="reset" type="button" style="align-self:flex-start">Reset to example</button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What a week looks like</h2>
+    <p>The same 6,000 office-days a week in three shapes. The dashed line is the desks in the plan above. A red bar is a day that does not fit.</p>
+    <div class="profiles" id="profiles"></div>
+  </section>
+
+  <section>
+    <h2>Three countries, three calendars</h2>
+    <ul class="plain">
+      <li><b>Size each site on its own peak, then add them up.</b> Time zones and local holidays mean spare desks in one office cannot cover a shortage in another. The sum is higher than one pooled calculation.</li>
+      <li><b>Check the weekend.</b> A site whose weekend is Friday and Saturday has a different working week. The 3-in-5 ratio becomes 3-in-5 on different days.</li>
+      <li><b>Match local rules.</b> Fire and occupancy limits are set per building and per country. The seat count must stay under each limit on the busiest day.</li>
+      <li><b>Segment by role.</b> Teams that need fixed equipment, such as labs or secure desks, are counted as fixed seats. The shared pool covers everyone else.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Beyond desks</h2>
+    <p>Everything else in the building is sized to the busiest day of about 1,500 people plus visitors, not to the 2,000 on the payroll.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>Space</th><th>Sized to</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Floor area</td><td>1,500 seats</td><td>Rule of thumb of 100 to 120 sq ft per seat gross, so about 1.5 to 1.8 lakh sq ft across all sites</td></tr>
+        <tr><td>Meeting rooms and phone booths</td><td>Peak-day meeting demand</td><td>More small rooms than large ones, since hybrid calls are mostly 2 to 4 people</td></tr>
+        <tr><td>Cafeteria and pantry</td><td>Lunch peak</td><td>Meals pre-booked with the desk booking, which cuts waste</td></tr>
+        <tr><td>Restrooms, lifts, fire exits</td><td>Occupancy limit per site</td><td>Set by local code, so check each country</td></tr>
+        <tr><td>Parking and transport</td><td>Peak-day arrivals</td><td>Review shuttle and cab pickup demand with the same booking data</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>What would move the number</h2>
+    <div class="grid2">
+      <div class="card"><h3>Pushes toward 2,000</h3><ul class="plain"><li>A fixed "Tuesday to Thursday" rule</li><li>Leadership asking everyone in on the same day</li><li>Headcount growth or more client-facing roles</li><li>Poor commute options on other days</li></ul></div>
+      <div class="card"><h3>Pushes toward 1,200</h3><ul class="plain"><li>Team-specific anchor days, staggered across the week</li><li>Per-day booking caps at about 90% of desks</li><li>Releasing unclaimed desks after a set time</li><li>More roles that are mostly remote</li></ul></div>
+    </div>
+  </section>
+
+  <nav class="pager"><a class="btn" href="index.html">← Overview</a><a class="btn primary" href="kpis.html">KPI scorecard →</a></nav>
+</main>
+<div class="wrap" style="padding-block:0 32px"><p class="foot">Prepared for the Technical Account Manager / Implementation Intern assessment, WorkInSync (MoveInSync). The office split and peak factor are stated assumptions.</p></div></div><script src="app.js"></script></body></html>

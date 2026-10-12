@@ -1,0 +1,70 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>KPI Scorecard</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap"><link rel="stylesheet" href="style.css"></head><body><div data-page="kpis"><header class="top"><div class="bar"><a class="brand" href="index.html"><svg viewBox="0 0 22 22" aria-hidden="true"><rect x="1" y="1" width="9" height="9" rx="1.5" fill="currentColor"/><rect x="12" y="1" width="9" height="9" rx="1.5" fill="currentColor" opacity=".55"/><rect x="1" y="12" width="9" height="9" rx="1.5" fill="currentColor" opacity=".55"/><rect x="12" y="12" width="9" height="9" rx="1.5" fill="currentColor"/></svg> Hybrid Seat Plan</a><nav aria-label="Pages"><a data-page="index" href="index.html">Overview</a><a data-page="sizing" href="sizing.html">Seat sizing</a><a data-page="kpis" href="kpis.html">KPI scorecard</a><a data-page="plan" href="plan.html">Rollout</a></nav></div></header><main class="wrap">
+  <section>
+    <p class="eyebrow">Question 2</p>
+    <h1>How I would judge the Facilities Team</h1>
+    <p class="lede">A good team gives people a desk when they want one, does not pay for space nobody uses, and keeps the building safe, clean and pleasant. No single number shows all three, so each space metric is read next to an experience metric, per office, every week.</p>
+  </section>
+
+  <section>
+    <h2>The scorecard</h2>
+    <div class="chips no-print" role="group" aria-label="Filter KPIs">
+      <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" type="button" data-filter="space" aria-pressed="false">Space use</button>
+      <button class="chip" type="button" data-filter="adoption" aria-pressed="false">Adoption</button>
+      <button class="chip" type="button" data-filter="cost" aria-pressed="false">Cost</button>
+      <button class="chip" type="button" data-filter="service" aria-pressed="false">Service</button>
+      <button class="chip" type="button" data-filter="safety" aria-pressed="false">Safety and food</button>
+    </div>
+    <p class="muted" id="kpi-count"></p>
+    <div class="grid2" id="kpi-list"></div>
+  </section>
+
+  <section>
+    <h2>When is a number good, watch-worthy or a problem</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Headline KPI</th><th><span class="tag good">On track</span></th><th><span class="tag amber">Watch</span></th><th><span class="tag warn">Act</span></th></tr></thead>
+      <tbody>
+        <tr><td>Peak-day occupancy</td><td class="num">80 to 90%</td><td class="num">70 to 80% or 90 to 95%</td><td class="num">Under 70% or over 95%</td></tr>
+        <tr><td>Seat denial rate</td><td class="num">Under 3%</td><td class="num">3 to 6%</td><td class="num">Over 6%</td></tr>
+        <tr><td>Check-in rate</td><td class="num">Over 90%</td><td class="num">80 to 90%</td><td class="num">Under 80%</td></tr>
+        <tr><td>Workplace satisfaction</td><td class="num">4.2 or higher</td><td class="num">3.8 to 4.2</td><td class="num">Under 3.8</td></tr>
+        <tr><td>Ticket close time</td><td class="num">1 working day</td><td class="num">1 to 2 days</td><td class="num">Over 2 days</td></tr>
+        <tr><td>Cost per used desk</td><td class="num">Flat or falling</td><td class="num">Up under 5%</td><td class="num">Up over 5% for 2 quarters</td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted">Targets are starting points. Each site adjusts them to its lease, local fire limits and its own benchmark after the pilot.</p>
+  </section>
+
+  <section>
+    <h2>Reading occupancy and satisfaction together</h2>
+    <p>Occupancy alone can look like success when it is actually crowding, or like failure when people simply like the space.</p>
+    <div class="quad">
+      <div class="card"><span class="tag good">High occupancy, high satisfaction</span><h3>Working well</h3><p>Watch headroom. If occupancy stays above 95%, add day caps before it turns into denials.</p></div>
+      <div class="card"><span class="tag warn">High occupancy, low satisfaction</span><h3>Crowded</h3><p>Look at noise, temperature, desk quality and denial rate on the busy days. Tighten caps or add peak-day seats.</p></div>
+      <div class="card"><span class="tag amber">Low occupancy, high satisfaction</span><h3>Comfortable but costly</h3><p>Release a floor, sublet, or merge zones. People are happy, the money is not.</p></div>
+      <div class="card"><span class="tag warn">Low occupancy, low satisfaction</span><h3>Wrong space or wrong reasons to come</h3><p>Ask why people stay away. Location, tools, food and team presence usually explain it.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rules I would act on</h2>
+    <div class="grid2">
+      <div class="card"><h3>Peak occupancy under 70% for 8 weeks</h3><p>Release floors or sublet. The plan is too big for how people really come in.</p></div>
+      <div class="card"><h3>Peak occupancy above 92% for 3 weeks</h3><p>Tighten caps and anchor days first. Add seats only if the denial rate stays above 3%.</p></div>
+      <div class="card"><h3>Check-in rate under 85%</h3><p>Shorten the time before an unchecked desk is released back to the pool.</p></div>
+      <div class="card"><h3>Satisfaction down while occupancy is up</h3><p>Fix comfort and noise on the busy days before changing capacity.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reporting rhythm</h2>
+    <ul class="plain">
+      <li><b>Weekly:</b> occupancy, denials, check-in, tickets and cleaning scores per office, shared with site leads.</li>
+      <li><b>Monthly:</b> cost, adoption, meeting rooms, meal wastage and safety, reviewed with the facilities head.</li>
+      <li><b>Quarterly:</b> satisfaction survey and a right-sizing review of the whole estate.</li>
+    </ul>
+  </section>
+
+  <nav class="pager"><a class="btn" href="sizing.html">← Seat sizing</a><a class="btn primary" href="plan.html">Rollout plan →</a></nav>
+</main>
+<div class="wrap" style="padding-block:0 32px"><p class="foot">Prepared for the Technical Account Manager / Implementation Intern assessment, WorkInSync (MoveInSync). The office split and peak factor are stated assumptions.</p></div></div><script src="app.js"></script></body></html>
